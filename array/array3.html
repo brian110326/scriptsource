@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 사용자로부터 10개의 정수를 입력받은 후 배열에 담기
+      const arr = [];
+      for (let index = 0; index < 10; index++) {
+        let num = Number(prompt("숫자입력"));
+        arr.push(num);
+      }
+      console.log(arr);
+      document.write(arr, "<br>");
+
+      // 최고 최저 점수
+      let max = arr[0];
+      for (let index = 0; index < arr.length; index++) {
+        if (max < arr[index]) {
+          max = arr[index];
+        }
+      }
+      console.log("최고 점수 : " + max);
+
+      let min = arr[0];
+      for (let index = 0; index < arr.length; index++) {
+        if (min > arr[index]) {
+          min = arr[index];
+        }
+      }
+      console.log("최저 점수 : " + min);
+    </script>
+  </body>
+</html>

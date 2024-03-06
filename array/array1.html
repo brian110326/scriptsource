@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 배열
+      const cars = ["sdfks", "vls", "afe"];
+      const cars1 = new Array("sdfks", "vls", "afe");
+
+      const cars2 = [];
+
+      // 배열 메소드
+      // 1. push() : 요소 추가(맨 뒤에)
+      cars2.push("dd89");
+
+      // 2. 조회
+      for (let index = 0; index < cars.length; index++) {
+        const element = cars[index];
+        console.log(element);
+      }
+
+      console.log("======================================");
+      // 객체
+      let result = "";
+      for (let i in cars) {
+        console.log(i);
+        console.log(typeof i);
+        result += cars[i];
+        console.log(result);
+      }
+
+      console.log("======================================");
+      // java에서 향상된 for문
+      for (const car of cars1) {
+        console.log(car);
+      }
+
+      console.log("======================================");
+      cars.forEach((car) => {
+        console.log(car);
+      });
+
+      console.log("======================================");
+      console.log(cars1[1]);
+    </script>
+  </body>
+</html>

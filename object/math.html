@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      document.write("원주율 : " + Math.PI, "<br>");
+      document.write("버림 : " + Math.floor(3.45), "<br>");
+      document.write("올림 : " + Math.ceil(3.45), "<br>");
+      document.write("절대값 : " + Math.abs(-3.45), "<br>");
+      document.write("최대값 : " + Math.max(4, 5, 3, 6, 7, 1, 8, 9), "<br>");
+      document.write("최소값 : " + Math.min(4, 5, 3, 6, 7, 1, 8, 9), "<br>");
+      document.write("0 ~ 1 사이 랜덤 : " + Math.random(), "<br>");
+
+      // (Math.random() * 6) + 1 ==> 1 ~ 6
+      document.write("0 ~ 9 사이 랜덤 : " + Math.random() * 10, "<br>");
+
+      // 120 ~ 150 사이 랜덤 숫자
+      document.write(Math.random() * 31 + 120, "<br>");
+
+      //   주사위 2개 던져서 2개의 눈의 합이 6이면 멈추기 아니면 계속하기
+      // Back-Tics :  `문자열 출력 "Jenny"` or 변수와문자와 같이 출력
+      //   while (true) {
+      //     let dice1 = Math.random() * 6 + 1;
+      //     let dice2 = Math.random() * 6 + 1;
+      //     // document.write("(" + dice1 + ", " + dice2 + ")");
+      //     document.write(`(${dice1},${dice2})`);
+      //     if (dice1 + dice2 == 6) {
+      //       break;
+      //     }
+      //   }
+
+      // 로또 번호 1~46
+      // 6개 번호를 추출하여 배열에 담은 후 출력 (동일한 번호는 담지 말기)
+      const arr = [];
+      while (true) {
+        let num = parseInt(Math.random() * 46 + 1);
+        if (!arr.includes(num)) {
+          arr.push(num);
+        }
+
+        if (arr.length == 6) {
+          break;
+        }
+      }
+      document.write("로또 번호 6개 : ", arr, "<br>");
+      document.write(`문자열 출력 "Jenny"`);
+    </script>
+  </body>
+</html>
