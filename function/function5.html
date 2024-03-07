@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function 작성
+      // 1. function keyword : add함수
+      function add(a, b) {
+        return a + b;
+      }
+
+      let result = add(4, 5);
+      document.write(result, "<br>");
+
+      // 2. 1번을 함수 표현식으로 바꿔서 작성
+      const myFunction = function (a, b) {
+        return a + b;
+      };
+      document.write(myFunction(6, 7), "<br>");
+
+      // 3. 1번을 화살표 함수로 작성
+      const myFunction2 = (a, b) => a + b;
+      document.write(myFunction2(3, 4), "<br>");
+
+      // 4. 1~10까지 숫자를 더해서 결과를 return하는 함수 작성
+      const myFunction3 = function () {
+        let sum = 0;
+        for (let index = 1; index <= 10; index++) {
+          sum += index;
+        }
+        return sum;
+      };
+      let result2 = myFunction3();
+      document.write("1~10까지의 합 : ", result2, "<br>");
+
+      // 5. 입력되는 숫자가 3의 배수이면 박수라는 문자열 출력, 3의배수가 아니면 통과출력
+      const multiple = function (num) {
+        num = Number(prompt());
+        if (num % 3 == 0) {
+          console.log("박수!");
+        } else {
+          console.log("통과!");
+        }
+      };
+
+      // 6. 입력되는 숫자가 3의 배수이면 박수, 9의 배수이면 박수X2출력 아니면 통과
+      const multiple2 = function (num) {
+        num = Number(prompt());
+        if (num % 3 == 0) {
+          if (num % 9 != 0) {
+            console.log("박수");
+          } else {
+            console.log("박수X2");
+          }
+        } else {
+          console.log("통과");
+        }
+      };
+
+      // 7. 2개 과목의 점수를 받아서 합이 120 이상이면 합격(하나라도 40 미만이면 과락으로 불합격)
+      const transcript = function (score1, score2) {
+        if (score1 + score2 >= 120) {
+          if (score1 < 40 || score2 < 40) {
+            console.log("과락으로 불합격");
+          } else {
+            console.log("합격");
+          }
+        }
+      };
+
+      // 8. 3의 배수에서 박수를 치는게 아니라 끝자리가 3,6,9로 끝나는 숫자라면 박수, 아니면 통과
+      const multiple3 = function (num) {
+        let snum = new String(num);
+        if (snum.endsWith("3") || snum.endsWith("6") || snum.endsWith("9")) {
+          console.log("박수");
+        } else {
+          console.log("통과");
+        }
+      };
+      multiple3(26);
+      multiple3(29);
+    </script>
+  </body>
+</html>
