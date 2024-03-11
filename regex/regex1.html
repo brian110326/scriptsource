@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h4>정규 표현식과 일치하는 문자열 리턴</h4>
+      <p id="exec"></p>
+    </div>
+    <div>
+      <h4>정규 표현식과 일치하는 문자열이 있으면 true, 없으면 false</h4>
+      <p id="test"></p>
+    </div>
+    <div>
+      <h4>정규 표현식과 일치하는 문자열 리턴</h4>
+      <p id="match"></p>
+    </div>
+    <div>
+      <h4>정규 표현식과 일치하는 문자열 위치 리턴</h4>
+      <p id="search"></p>
+    </div>
+    <script>
+      // 정규표현식 ==> 자바, 파이썬, 자바스크립트 모두 동일 => 표현 방식
+      // 검색에서 aa 문자가 오고 그 다음 문자는 숫자 or 문자 or 특수문자 가능하고, 대문자로 시작하는~~
+      // 이름을 입력받았을 때 한글인가?
+      // 아이디를 입력 시 영어대소문자와 숫자, 특수문자는 $,! 허용
+
+      // 플래그
+      // g : global ==> 전역검색, i : 대소문자 구별 없이, m : 다중행 검색, u : 유니코드 패턴, y : 문자열의 현위치부터 검색
+      // ^ 와 m 플래그 : ^ => ~로 시작하는
+      // $ : ~로 끝나는
+      // . : 모든 문자, 공백, 숫자, 특수문자와 매핑
+      // \. : 마침표
+      // [abc] == [a|b|c] ==> a or b or c
+      // [A-Z] : 모든 대문자
+      // [A-Z a-z] : 모든 영문자
+      // [가-힣] : 모든 한글
+      // [^A-Z] : 대문자를 제외한
+
+      // 수량
+      // * : 0 ~ 무한대
+      // + : 1 ~ 무한대
+      // ? : 0 ~ 1
+      // {최소값, 최대값} : a{1}, a{1,5}, a{3,} : 최소3개 최대 무한
+
+      // \w ==> [a-z A-Z 0-9_], \W ==> [^a-z A-Z 0-9_] word
+      // \s ==> [공백, 엔터, tab], \S ==> [^공백, 엔터, tab] space
+      // \d ==> [0-9], \D ==> [^0-9] decimal
+
+      // 정규식에서의 매칭은 적극적 일치 방식(매칭되는 것 모두)
+      // ?를 붙여 소극적 일치 방식으로 바꿔준다
+      // <i>.*?<\/i> : i태그와 그 문자열 찾기
+      // <i>greedy</i> and <i>lazy</i> matching.
+
+      // () : 그룹화 (캡쳐링 개념 추가됨)
+
+      // script에서 정규식 사용하기
+      // exec(), test(), match(), search(), replace(), split()
+      const regEx = /Ajax/; //패턴 생성
+      const content = "JavaScript jQuery Ajax JavaScript";
+
+      console.log(regEx.exec(content));
+      document.querySelector("#exec").innerHTML = regEx.exec(content);
+
+      console.log(regEx.test(content));
+      document.querySelector("#test").innerHTML = regEx.test(content);
+
+      // String 메소드 match, search
+      console.log(content.match(regEx));
+      document.querySelector("#match").innerHTML = content.match(regEx);
+
+      console.log(content.search(regEx));
+      document.querySelector("#search").innerHTML = content.search(regEx);
+
+      const content2 = "John Smith";
+      const regEx2 = /(\w+)\s(\w+)/;
+      console.log(content2.match(regEx2));
+      // ['John Smith', 'John', 'Smith', index: 0, input: 'John Smith', groups: undefined]
+      // 괄호친 것을 패턴으로 캡쳐링
+
+      console.log(content2.replace(regEx2, "$2, $1"));
+
+      const ko = "kokokoko";
+      const koooo = "kooookoooo";
+      console.log(ko.match(/ko+/));
+      console.log(koooo.match(/ko+/));
+      console.log(ko.match(/(ko)+/));
+      console.log(ko.match(/(ko)/g));
+      console.log(ko.match(/(ko)/));
+      console.log(koooo.match(/(ko)+/));
+    </script>
+  </body>
+</html>

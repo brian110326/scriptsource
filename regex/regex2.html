@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #text-danger {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus sequi unde ipsum et distinctio consectetur, praesentium voluptate voluptatum
+      labore temporibus illum. Nihil, porro. Obcaecati quae a earum impedit reprehenderit dicta inventore quod maxime necessitatibus nostrum
+      recusandae laudantium sunt dignissimos, corrupti, rerum iusto optio, sapiente maiores libero corporis veritatis sit eius id? Dolores sint veniam
+      voluptates quidem deleniti in labore nesciunt? Hic, tempora optio? Animi necessitatibus ratione nemo aperiam qui. Est recusandae optio
+      temporibus soluta corporis voluptatem animi tempore consequatur, tempora repellendus earum cum quaerat natus suscipit eligendi pariatur
+      laboriosam ipsam rerum, doloremque accusamus distinctio illo reiciendis veniam id? Voluptatem quod maiores aliquam eum a iure impedit unde nam
+      commodi, reprehenderit excepturi at aut doloremque voluptate ex, repellat, quaerat id sequi placeat cum dolor animi sit fugit possimus?
+      Provident doloribus ducimus magni est voluptatum repudiandae? Sapiente ipsam aut pariatur consequatur, eos mollitia quaerat asperiores
+      laudantium, illum veritatis distinctio assumenda velit, molestias expedita. Nostrum officia aliquam quos dolores officiis esse consectetur fugit
+      odit maxime sequi id, blanditiis, vero beatae laudantium culpa saepe quo ea labore. Dignissimos eligendi iusto quas accusamus, vero voluptatibus
+      inventore sapiente, vitae similique sint nihil quod veritatis omnis aperiam neque amet dolorum placeat explicabo, illum eos repudiandae dolorem
+      nesciunt?
+    </p>
+    <p id="match"></p>
+    <form action="" method="post">
+      <div>
+        <label for="userid">아이디</label>
+        <input type="text" name="userid" id="userid" />
+        <small id="text-danger"></small>
+      </div>
+
+      <div>
+        <label for="name">이름</label>
+        <input type="text" name="name" id="name" />
+        <small id="text-danger"></small>
+      </div>
+      <div>
+        <button type="submit">전송</button>
+      </div>
+    </form>
+
+    <script>
+      // ipsum 문자 찾기
+      const regex = /ipsum/g;
+
+      // 원본 문자열 가져오기
+      const p = document.querySelector("p").innerText;
+      // 패턴 생성
+      document.querySelector("#match").innerText = p.match(regex);
+
+      // 폼 submit이 일어나면 이름을 가져와서 유효성 검증
+      // 아이디 유효성 검사
+      // 영문자, 숫자 조합으로 6~12자리 허용
+      // 2~5자리, 한글이 입력되어야함
+      document.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.querySelector("#name");
+        const regEx = /^[가-힣]{2,5}$/;
+
+        if (!regEx.test(name.value)) {
+          name.nextElementSibling.innerHTML = "이름을 확인해주세요";
+        }
+      });
+    </script>
+  </body>
+</html>
