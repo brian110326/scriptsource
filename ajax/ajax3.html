@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        height: 50px;
+        background-color: lightblue;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container li {
+        list-style: none;
+        width: 25%;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="container">
+      <li>메뉴 1</li>
+      <li>메뉴 2</li>
+      <li>메뉴 3</li>
+      <li>메뉴 4</li>
+    </ul>
+    <div class="result"></div>
+
+    <script>
+      // https://github.com/brian110326/brian110326.github.io.git ==> 주소 다 붙여넣으면 block당함
+
+      // 메뉴2을 클릭하면 서버로부터 데이터 가져오기
+      // ok : 200
+      // not found : 404, 403, 401
+      // 서버 오류 : 500
+      const menu2 = document.querySelector(".container li:nth-child(2)");
+
+      menu2.addEventListener("click", () => {
+        fetch("https://brian110326.github.io/version.json")
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error();
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);
+            console.log(data.version);
+            console.log(data.codename);
+
+            let result = "<ul><li>version : " + data.version + "</li>";
+            result += "<li>codename : " + data.codename + "</li></ul>";
+
+            document.querySelector(".result").innerHTML = result;
+          })
+          .catch(() => console.log("오류"));
+      });
+    </script>
+  </body>
+</html>
