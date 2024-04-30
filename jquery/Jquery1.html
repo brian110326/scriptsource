@@ -6,6 +6,7 @@
     <title>Document</title>
   </head>
   <body>
+    <h1>Header</h1>
     <form action="" method="post">
       <div>
         <input type="text" name="name" id="name" />
@@ -23,6 +24,19 @@
       // javascript 예전 버전 같은 경우에 문제점 발생(브라우저마다 다르게 코드 작성 or 코드 너무 길거나...)
       // 현재는 javascript가 가진 문제 해결 ==> jQuery 굳이 사용할 필요 X
       // but 여전히 웹사이트에는 jQuery를 기반으로 개발된 사이트가 많이 존재
+
+      // dom 요소 접근, ajax 간편 => jQuery 장점
+      // 라이브러리 로드 필요 => 네트워크 부담
+
+      // form 요소 찾아오기
+      const form = $("form");
+      console.log(form);
+
+      const name = $("#name");
+      console.log(name);
+
+      const header = $("h1");
+      console.log(header.html());
     </script>
   </body>
 </html>
